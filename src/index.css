@@ -2,40 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Trading System Design Tokens - Professional Dark Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background & Foreground */
+    --background: 220 13% 9%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Cards & Surfaces */
+    --card: 220 13% 11%;
+    --card-foreground: 210 20% 98%;
+    
+    --popover: 220 13% 11%;
+    --popover-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Primary - Professional Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 13% 9%;
+    --primary-glow: 217 91% 70%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Secondary - Muted Gray */
+    --secondary: 215 14% 17%;
+    --secondary-foreground: 210 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Muted Elements */
+    --muted: 215 14% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Success Green */
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 20% 98%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Trading Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 210 20% 98%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 220 13% 9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Borders & Inputs */
+    --border: 215 14% 20%;
+    --input: 215 14% 17%;
+    --ring: 217 91% 60%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    /* Trading Specific */
+    --online-status: 142 76% 36%;
+    --offline-status: 215 20% 50%;
+    --pending-status: 43 96% 56%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-card: linear-gradient(135deg, hsl(220 13% 11%), hsl(215 14% 13%));
+    
+    /* Shadows */
+    --shadow-trading: 0 4px 20px -2px hsl(220 13% 5% / 0.4);
+    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.3);
+    
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -92,6 +117,24 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Additional Trading System Utilities */
+  .trading-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-trading);
+  }
+  
+  .status-online {
+    color: hsl(var(--online-status));
+  }
+  
+  .status-offline {
+    color: hsl(var(--offline-status));
+  }
+  
+  .status-pending {
+    color: hsl(var(--pending-status));
+  }
 }
 
 @layer base {
@@ -101,5 +144,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Professional Trading Typography */
+  .trading-title {
+    @apply text-3xl font-bold tracking-tight;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
